@@ -19,4 +19,11 @@ public class BaseRestController {
         ApiErrorDTO error = new ApiErrorDTO(exception.getMessage());
         return ResponseEntity.badRequest().body(error);
     }
+
+    @ExceptionHandler(Throwable.class)
+    public ResponseEntity<ApiErrorDTO> handlerUnexpectedException(Throwable exception) {
+        exception.printStackTrace();
+        ApiErrorDTO error = new ApiErrorDTO("Ops, ocorreu um erro inesperado.");
+        return ResponseEntity.internalServerError().body(error);
+    }
 }
