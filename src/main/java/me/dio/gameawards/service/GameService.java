@@ -11,4 +11,5 @@ public interface GameService {
     void insert(Game game);
     void update(Long id, Game game);
     void delete(Long id);
+    void vote(Long id);
 }
